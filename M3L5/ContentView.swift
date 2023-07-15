@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var photos = ["gallery1", "gallery2", "gallery3", "gallery4", "gallery5", "gallery6", "gallery7", "gallery8", "gallery9", "gallery10", "gallery11"]
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        ScrollView{
+            LazyVGrid (columns: [GridItem(spacing: 0), GridItem(spacing: 0), GridItem(spacing: 0)], spacing: 0) {
+                ForEach(photos, id: \.self) { photo in
+                    
+                    Image(photo)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
         }
-        .padding()
     }
 }
 
